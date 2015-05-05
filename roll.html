@@ -1,0 +1,133 @@
+<html>
+<head>
+	<title>imgroll</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		div{
+			height: 200px;
+			width:560px;
+			background-color: #eea;
+			margin: auto;
+			padding:0px;
+			position: relative;
+			overflow: hidden;
+		}
+		img{
+			height: 180px;
+			width: 140px;
+			margin: 0px;
+			padding: 0px;
+		}
+		ul{
+			list-style: none;
+			margin: 0px;
+			padding: 0px;
+			position: absolute;
+			left: 0px;
+			top:0px;
+			
+		}
+		li{
+			float: left;
+			height: 180px;
+			width: 140px;
+			margin: 0px;
+			padding: 0px;
+
+		}
+		body{background-color: black;}
+		#button1{
+			height: 50px;
+			width: 200px;
+			background-color: #aae;
+			position: absolute;
+			left: 200px;
+		}
+		#button2{
+			height: 50px;
+			width: 200px;
+			background-color: #aae;
+			position: absolute;
+			left: 1050px;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<ul id="ul1">
+			<li><img src="img/1.jpg"></li>
+			<li><img src="img/2.jpg"></li>
+			<li><img src="img/3.jpg"></li>
+			<li><img src="img/4.jpg"></li>
+		</ul>
+	</div>
+	<input type="button" value="向左移动" id="button1">
+	<input type="button" value="向右移动" id="button2">
+</body>
+<script type="text/javascript">
+	window.onload=function()
+	{
+		var odiv=document.getElementById("div1");
+		var oul=odiv.getElementsByTagName('ul')[0];
+		var oli=oul.getElementsByTagName('li');
+		var bt1=document.getElementById("button1");
+		var bt2=document.getElementById("button2");
+		var speed
+		var timer=null;
+		oul.innerHTML=oul.innerHTML+oul.innerHTML;
+
+		oul.style.width=(oli[0].offsetWidth)*(oli.length)+"px";
+		alert(oul.style.width);
+		timer=setInterval(roll,50);
+		function roll()
+		{
+			oul.style.left=oul.offsetLeft+speed+"px"
+			if(oul.offsetLeft<-oul.offsetWidth/2)
+					{
+						oul.style.left="0px";
+					}
+			else if (oul.offsetLeft>0)
+					 {
+						oul.style.left=-oul.offsetWidth/2+'px';
+					 };
+		}
+		bt1.onclick=function()
+		{
+			speed=-5;
+	  	}
+		bt2.onclick=function()
+		{
+			speed=5;
+		}
+		oul.onmouseover=function(){
+			clearInterval(timer);
+		}
+		oul.onmouseout=function(){
+			timer=setInterval(roll,50);
+		function roll()
+		{
+			oul.style.left=oul.offsetLeft+speed+"px"
+			if(oul.offsetLeft<-oul.offsetWidth/2)
+					{
+						oul.style.left="0px";
+					}
+			else if (oul.offsetLeft>0)
+					 {
+						oul.style.left=-oul.offsetWidth/2+'px';
+					 };
+		}
+
+		}
+
+		
+		
+
+		
+
+	}
+
+
+
+</script>
+</html>
